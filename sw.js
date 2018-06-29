@@ -10,7 +10,7 @@ var cacheFiles = [
                   'node_modules/bootstrap/dist/css/bootstrap.css',
                   'node_modules/bootstrap/dist/js/bootstrap.js',
                   'node_modules/jquery/dist/jquery.js'
-                  ]
+                  ];
 	self.addEventListener('install', function(event) {
 	  // Perform install step
 	  console.log("I'm ready to install for you");
