@@ -10,7 +10,8 @@ var cacheFiles = [
                   'node_modules/bootstrap/dist/css/bootstrap.css',
                   'node_modules/bootstrap/dist/js/bootstrap.js',
                   'node_modules/jquery/dist/jquery.js',
-                  'https://free.currencyconverterapi.com/api/v5/currencies'
+                  'https://free.currencyconverterapi.com/api/v5/currencies',
+                  'https://free.currencyconverterapi.com/api/v5/convert?q=USD_PHP,PHP_USD'
                   ];
 	self.addEventListener('install', function(event) {
 	  // Perform install step
