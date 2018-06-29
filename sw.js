@@ -46,7 +46,22 @@ var cacheFiles = [
 	    	if(response) {
 	    		console.log('Service worker found in cache',event.request.url);
 	    		return response;
-	    	}
+        }
+        var requestClone = event.request.clone();
+        fetch(requestClone).then(function(response){
+          if(!response){
+            console.log('No response from fetch');
+            return response;
+          }
+          var responseClone = request.clone;
+          caches.open(cacheName).then(function(cache){
+            console.log('New data found', event.request.url);
+            cache.put(event.request,requestClone);
+            return response;
+          })
+        }).catch(function(err){
+          console.log("Service worker error fetching",err);
+        })
 	      return fetch(event.request);
 	    })
 	  );
