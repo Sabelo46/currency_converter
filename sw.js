@@ -23,18 +23,20 @@ var cacheFiles = [
 	    })
 	  )
 	});
-	self.addEventListener('activated', function(event) {
-	  // Perform install step
-	  console.log("I'm currently activated for you..");
-	  console.log(event.request);
-	});
+	self.addEventListener('activate', function(event) {
+		 console.log('Service worker activated');
+		});
+
 
 	self.addEventListener('fetch', function(event) {
 	  // Perform install step
 	  console.log("I'm ready to fetch for you..");
 	  event.respondWith(
 	    caches.match(event.request).then(function(response) {
-	    	if(response) return response;
+	    	if(response) {
+	    		console.log('Service worker found in cache');
+	    		return response;
+	    	}
 	      return fetch(event.request);
 	    })
 	  );
