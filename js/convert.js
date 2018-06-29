@@ -17,6 +17,7 @@ convert.addEventListener('click',function(){
          console.log(data.results);
          let rec = data.results;
          for(check in rec){
+           self.addEventListener
              if(fromSelect == rec[check].fr && toSelect == rec[check].to){
                  to.value = from.value * rec[check].val;
              }

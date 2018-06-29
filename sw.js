@@ -38,22 +38,46 @@ var cacheFiles = [
 		 	)
 		});
 
-    self.addEventListener('fetch', function(event) {
+    self.addEventListener('fetch',function(event){
       event.respondWith(
-        // Try the cache
-        caches.match(event.request).then(function(response) {
-          if (response) {
+        caches.match(event.request).then(function(event){
+          if(response){
+            console.log('Found Service worker in cache',event.request.url);
             return response;
           }
-          return fetch(event.request).then(function(response) {
-            if (response.status === 404) {
-              return caches.match('index.html');
+          var requestClone = event.request.clone();
+          fetch(requestClone).then(function(response){
+            if(!response){
+              console.log('No response from fetch');
+              return response;
             }
-            return response
-          });
-        }).catch(function() {
-          // If both fail, show a generic fallback:
-          return caches.match('index.html');
+              var responseClone = response.clone();
+              caches.open(cacheName).then(function(cache){
+                  cache.put(event.request,responseClone);
+                  return response;
+              });
+          }).catch(function(err){
+            console.log('Service worker error fetching and cachig',err);
+          })
         })
-      );
-    });
+      )
+    })
+    // self.addEventListener('fetch', function(event) {
+    //   event.respondWith(
+    //     // Try the cache
+    //     caches.match(event.request).then(function(response) {
+    //       if (response) {
+    //         return response;
+    //       }
+    //       return fetch(event.request).then(function(response) {
+    //         if (response.status === 404) {
+    //           return caches.match('index.html');
+    //         }
+    //         return response
+    //       });
+    //     }).catch(function() {
+    //       // If both fail, show a generic fallback:
+    //       return caches.match('index.html');
+    //     })
+    //   );
+    // });
