@@ -11,7 +11,7 @@ var cacheFiles = [
                   'node_modules/bootstrap/dist/js/bootstrap.js',
                   'node_modules/jquery/dist/jquery.js',
                   'https://free.currencyconverterapi.com/api/v5/currencies',
-                  `https://free.currencyconverterapi.com/api/v5/convert?q=${query}`
+                  // `https://free.currencyconverterapi.com/api/v5/convert?q=${query}`
                   ];
 	self.addEventListener('install', function(event) {
 	  // Perform install step
