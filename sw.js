@@ -40,7 +40,7 @@ var cacheFiles = [
 
 	self.addEventListener('fetch', function(event) {
 	  // Perform install step
-	  console.log("I'm ready to fetch for you..");
+	  console.log("I'm ready to fetch for you..", event.request.url);
 	  event.respondWith(
 	    caches.match(event.request).then(function(response) {
 	    	if(response) {
