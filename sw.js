@@ -38,33 +38,51 @@ var cacheFiles = [
 		 	)
 		});
 
-
-
-	self.addEventListener('fetch', function(event) {
-	  // Perform install step
-	  console.log("I'm ready to fetch for you..", event.request.url);
-	  event.respondWith(
-	    caches.match(event.request).then(function(response) {
-	    	if(response) {
-	    		console.log('Service worker found in cache',event.request.url);
-	    		return response;
-        }
-        var requestClone = event.request.clone();
-        fetch(requestClone).then(function(response){
-          if(!response){
-            console.log('No response from fetch');
+    self.addEventListener('fetch', function(event) {
+      event.respondWith(
+        // Try the cache
+        caches.match(event.request).then(function(response) {
+          if (response) {
             return response;
           }
-          var responseClone = request.clone;
-          caches.open(cacheName).then(function(cache){
-            console.log('New data found', event.request.url);
-            cache.put(event.request,requestClone);
-            return response;
-          })
-        }).catch(function(err){
-          console.log("Service worker error fetching",err);
+          return fetch(event.request).then(function(response) {
+            if (response.status === 404) {
+              return caches.match('index.html');
+            }
+            return response
+          });
+        }).catch(function() {
+          // If both fail, show a generic fallback:
+          return caches.match('index.html');
         })
-	      return fetch(event.request);
-	    })
-	  );
-	});
+      );
+    });
+
+	// self.addEventListener('fetch', function(event) {
+	//   // Perform install step
+	//   console.log("I'm ready to fetch for you..", event.request.url);
+	//   event.respondWith(
+	//     caches.match(event.request).then(function(response) {
+	//     	if(response) {
+	//     		console.log('Service worker found in cache',event.request.url);
+	//     		return response;
+  //       }
+  //       var requestClone = event.request.clone();
+  //       fetch(requestClone).then(function(response){
+  //         if(!response){
+  //           console.log('No response from fetch');
+  //           return response;
+  //         }
+  //         var responseClone = request.clone;
+  //         caches.open(cacheName).then(function(cache){
+  //           console.log('New data found', event.request.url);
+  //           cache.put(event.request,requestClone);
+  //           return response;
+  //         })
+  //       }).catch(function(err){
+  //         console.log("Service worker error fetching",err.request);
+  //       })
+	//       return fetch(event.request);
+	//     })
+	//   );
+	// });
