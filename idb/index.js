@@ -1,5 +1,8 @@
-import idb from 'idb';
 var dbPromise = idb.open('load-db',1,function(upgradeDb){
-    var keyValStore = upgradeDb.createObjectStore('keyval');
-    keyValStore.put('world','hello');
+   if(!upgradeDb.objectStoreNames.contains('store')){
+       upgradeDb.createObjectStore('store'); 
+       upgradeDb.createObjectStore('people',{keyPath:'email'});
+       upgradeDb.createObjectStore('notes',{autoIncrement:true});
+       upgradeDb.createObjectStore('logs',{keyPath:'id',autoIncrement:true});
+   }
 })
