@@ -15,7 +15,7 @@ var cacheFiles = [
 	self.addEventListener('install', function(event) {
 	  // Perform install step
 	  console.log("I'm ready to install for you");
-	  console.log(event.request);
+	 
 	  event.waitUntil(
 	    caches.open(cacheName).then(function(cache){
 	    	console.log('Adding files to cache');
@@ -25,6 +25,16 @@ var cacheFiles = [
 	});
 	self.addEventListener('activate', function(event) {
 		 console.log('Service worker activated');
+		 event.waitUntil(
+		 	caches.keys().then(function(cacheNames){
+		 		return Promise.all(cacheNames.map(function(thisCacheName){
+           if(thisCacheName !== cacheName){
+             console.log('Removing cache files',thisCacheName);
+             return caches.delete(thisCacheName);
+           }
+         }))
+		 	})
+		 	)
 		});
 
 
@@ -34,7 +44,7 @@ var cacheFiles = [
 	  event.respondWith(
 	    caches.match(event.request).then(function(response) {
 	    	if(response) {
-	    		console.log('Service worker found in cache');
+	    		console.log('Service worker found in cache',event.request.url);
 	    		return response;
 	    	}
 	      return fetch(event.request);
