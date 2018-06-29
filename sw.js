@@ -57,27 +57,9 @@ var cacheFiles = [
                   return response;
               });
           }).catch(function(err){
-            console.log('Service worker error fetching and cachig',err);
+            console.log('Service worker error fetching and caching',err);
           })
         })
       )
     })
-    // self.addEventListener('fetch', function(event) {
-    //   event.respondWith(
-    //     // Try the cache
-    //     caches.match(event.request).then(function(response) {
-    //       if (response) {
-    //         return response;
-    //       }
-    //       return fetch(event.request).then(function(response) {
-    //         if (response.status === 404) {
-    //           return caches.match('index.html');
-    //         }
-    //         return response
-    //       });
-    //     }).catch(function() {
-    //       // If both fail, show a generic fallback:
-    //       return caches.match('index.html');
-    //     })
-    //   );
-    // });
+   
