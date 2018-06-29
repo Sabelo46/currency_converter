@@ -1,8 +1,9 @@
 
 convert.addEventListener('click',function(){
-    let fromSelect = have.value;
-    let toSelect = expect.value;
-    fetch('https://free.currencyconverterapi.com/api/v5/convert?q=USD_PHP,PHP_USD')
+    let fromSelect = encodeURIComponent(have.value);
+    let toSelect = encodeURIComponent(expect.value);
+    const query = `${fromSelect}_${toSelect}`;
+    fetch(`https://free.currencyconverterapi.com/api/v5/convert?q=${query}`)
   .then(
     function(response) {
       if (response.status !== 200) {

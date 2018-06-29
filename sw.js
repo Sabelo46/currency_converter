@@ -11,7 +11,7 @@ var cacheFiles = [
                   'node_modules/bootstrap/dist/js/bootstrap.js',
                   'node_modules/jquery/dist/jquery.js',
                   'https://free.currencyconverterapi.com/api/v5/currencies',
-                  'https://free.currencyconverterapi.com/api/v5/convert?q=USD_PHP,PHP_USD'
+                  `https://free.currencyconverterapi.com/api/v5/convert?q=${query}`
                   ];
 	self.addEventListener('install', function(event) {
 	  // Perform install step
@@ -27,16 +27,17 @@ var cacheFiles = [
 	self.addEventListener('activate', function(event) {
 		 console.log('Service worker activated');
 		 event.waitUntil(
-		 	caches.keys().then(function(cacheNames){
-		 		return Promise.all(cacheNames.map(function(thisCacheName){
-           if(thisCacheName !== cacheName){
-             console.log('Removing cache files',thisCacheName);
-             return caches.delete(thisCacheName);
-           }
-         }))
-		 	})
+				 	caches.keys().then(function(cacheNames){
+				 		return Promise.all(cacheNames.map(function(thisCacheName){
+				           if(thisCacheName !== cacheName){
+				             console.log('Removing cache files',thisCacheName);
+				             return caches.delete(thisCacheName);
+				           }
+				         }))
+				 	})
 		 	)
 		});
+
 
 
 	self.addEventListener('fetch', function(event) {
