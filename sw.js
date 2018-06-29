@@ -9,7 +9,8 @@ var cacheFiles = [
                   'js/currenciesController.js',
                   'node_modules/bootstrap/dist/css/bootstrap.css',
                   'node_modules/bootstrap/dist/js/bootstrap.js',
-                  'node_modules/jquery/dist/jquery.js'
+                  'node_modules/jquery/dist/jquery.js',
+                  'https://free.currencyconverterapi.com/api/v5/currencies'
                   ];
 	self.addEventListener('install', function(event) {
 	  // Perform install step
@@ -33,7 +34,8 @@ var cacheFiles = [
 	  console.log("I'm ready to fetch for you..");
 	  event.respondWith(
 	    caches.match(event.request).then(function(response) {
-	      return response || fetch(event.request);
+	    	if(response) return response;
+	      return fetch(event.request);
 	    })
 	  );
 	});
