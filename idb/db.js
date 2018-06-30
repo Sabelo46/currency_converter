@@ -8,8 +8,9 @@ else{
     }
     request.onsuccess = function(event){
         db = event.target.result;
-        request.onupgradeneeded = function(event){
-            alert('Update needed');
-        }
+        alert('set');
+    }
+    request.onupgradeneeded = function(event){
+        alert('Update needed');
     }
 }
