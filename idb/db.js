@@ -6,14 +6,16 @@ spell=[
 ]
 if(window.indexedDB){
     var request = indexedDB.open('roughDB',1);
-   
         request.onupgradeneeded = function(event){
-            alert('need');
             var db = event.target.result;
-            var objectStore = db.createObjectStore("hello", { autoIncrement : true });
-            var transaction = db.transaction(["hello"], "readwrite");
-            var keyValStore = transaction.objectStore('hello');
-            keyValStore.put('bar', 'foo');
+             // Create another object store called "names" with the autoIncrement flag set as true.    
+            var objectStore = db.createObjectStore("check", { autoIncrement : true });
+            objectStore.transaction.oncomplete = function(event){
+                var check = db.transaction(["hello"],"readwrite");
+                var store = check.objectStore('hello');
+                for(let c=0;c< spell.length;c++){
+                    store.add(spell[c]);
+                }   
+            }
         }
-    
     }
