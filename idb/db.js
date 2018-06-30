@@ -25,4 +25,7 @@ if(window.indexedDB){
                 }
         }   
     }
+    request.then(function(db){
+        console.log('Good to go on indexedDB! ');
+    })
 }
