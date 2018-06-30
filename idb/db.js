@@ -18,8 +18,9 @@ else{
         db = event.target.result;
         var objectStore = db.createObjectStore("name", { keyPath: "name" });
         objectStore.createIndex("confirm", "name", { unique: false });
-        objectStore.transaction.oncomplete = function(event){
-            alert('Finsh update db');
-        }
+        var customerObjectStore = db.transaction(["name"], "readwrite").objectStore("customers");
+        customerData.forEach(function(customer) {
+        customerObjectStore.add(customer);
+        });
     }
 }
