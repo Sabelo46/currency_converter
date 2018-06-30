@@ -16,10 +16,10 @@ else{
     request.onupgradeneeded = function(event){
         alert('Update needed');
         db = event.target.result;
-        var objectStore = db.createObjectStore("name", { keyPath: "name" });
+        var objectStore = db.createObjectStore("customers", { keyPath: "name" });
         objectStore.createIndex("confirm", "name", { unique: false });
         objectStore.transaction.onComplete = function(event){
-              var customerObjectStore = db.transaction(["name"], "readwrite").objectStore("name");
+              var customerObjectStore = db.transaction("customers", "readwrite").objectStore("customers");
               customerData.forEach(function(customer) {
               customerObjectStore.add(customer);
         });
