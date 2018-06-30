@@ -28,5 +28,6 @@ if(window.indexedDB){
         }  
     
     }
-    
+
+   console.log('dedediehde'); 
 }
