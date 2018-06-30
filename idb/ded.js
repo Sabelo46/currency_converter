@@ -47,18 +47,6 @@ else{
                                 alert('true');
                             };
                     }
-                    // using a cursor
-                    var store = db.transaction("customrs").objectStore("customers");
-                    store.openCursor().onsuccess = function(event){
-                        var cursor = event.target.result;
-                        if(cursor){
-                            alert("Name for SSN " + cursor.key + " is " + cursor.value.name);
-                            cursor.continue();
-                        }
-                        else{
-                            alert("No more entries!");
-                        }
-                    }
                     //To delete code below
                     // let request = db.transaction(["customers"], "readwrite")
                     // .objectStore("customers")
