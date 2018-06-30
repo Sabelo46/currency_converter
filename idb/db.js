@@ -10,7 +10,7 @@ if(window.indexedDB){
         console.log(event);
     }
     request.onsuccess = function(event){
-        console.log('success');
+        console.log(request.getAll());
     }
         request.onupgradeneeded = function(event){
             alert();
