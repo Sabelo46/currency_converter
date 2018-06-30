@@ -48,8 +48,8 @@ else{
                             };
                     }
                     // using a cursor
-                    var store = db.transaction("customrs").objectStore("customers");
-                    store.openCursor().onsuccess = function(event){
+                    var storeCheck = db.transaction("customrs").objectStore("customers");
+                    storeCheck.openCursor().onsuccess = function(event){
                         var cursor = event.target.result;
                         if(cursor){
                             alert("Name for SSN " + cursor.key + " is " + cursor.value.name);
