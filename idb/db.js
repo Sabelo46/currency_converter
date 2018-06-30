@@ -65,9 +65,8 @@ else{
                        
                     // }
                      //Searching thrrough
-                     var searchStore = db.transaction("customers").objectStore("customers");
-                        var index = searchStore.index("confirm");
-                   
+                     
+                        var index = objectStore.index("confirm");
                         index.openCursor().onsuccess = function(event){
                             var cursor = event.target.request;
                             if(cursor){
