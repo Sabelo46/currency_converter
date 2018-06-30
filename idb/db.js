@@ -1,6 +1,6 @@
 const customerData = [
     { ssn: "444-44-4444", name: "Tola", age: 35, email: "bill@company.com" },
-    { ssn: "555-55-5555", name: "Kola", age: 32, email: "donna@home.org" }
+    { ssn: "555-55-5555", name: "Shola", age: 32, email: "donna@home.org" }
   ];
 if(!window.indexedDB){
     alert('Not indexdb not allowed here');
