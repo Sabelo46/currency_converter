@@ -14,16 +14,14 @@ else{
         alert('set');
     }
     request.onupgradeneeded = function(event){
-        alert('Update needed');
-        db = event.target.result;
-        var objectStore = db.createObjectStore("customers", { keyPath: "name" });
-        objectStore.createIndex("confirm", "name", { unique: false });
-        objectStore.transaction.onComplete = function(event){
-              var customerObjectStore = db.transaction("customers", "readwrite").objectStore("customers");
-              customerData.forEach(function(customer) {
-              customerObjectStore.add(customer);
-        });
+            alert('Update needed');
+            db = event.target.result;
+            var objectStore = db.createObjectStore("customers", { keyPath: "name" });
+            objectStore.createIndex("confirm", "name", { unique: false });
+            objectStore.transaction.onComplete = function(event){
+                alert();
+            }
         }
       
-    }
+    
 }
