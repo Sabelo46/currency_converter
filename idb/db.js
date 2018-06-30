@@ -8,7 +8,7 @@ if(!window.indexedDB){
 else{
     var request = window.indexedDB.open("MyTestDatabase", 3);
     request.onerror = function(event){
-        alert('Error in the code'+ event.target.errorCode)
+        // alert('Error in the code'+ event.target.errorCode)
     }
     request.onsuccess = function(event){
        console.log('Successful');
