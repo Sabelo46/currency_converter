@@ -26,7 +26,7 @@ if(window.indexedDB){
                 console.log(store.getAll());
                 return store.getAll();      
         }  
-        console.log('swhd');  
+    
     }
     
 }
