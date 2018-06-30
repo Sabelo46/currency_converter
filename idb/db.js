@@ -26,6 +26,9 @@ else{
                 
                     });
                     var request = db.transaction(["customers"]).objectStore("customers").get('Tola');
+                    request.onsuccess = function(event){
+                        alert('Tola email is '+request.result.email);
+                    }
                     //To delete code below
                     // var request = db.transaction(["customers"], "readwrite")
                     // .objectStore("customers")
