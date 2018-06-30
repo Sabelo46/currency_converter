@@ -32,8 +32,8 @@ else{
                     }
                     //Update 
                     let updateStore =  db.transaction(["customers"]).objectStore("customers");
-                    var request = updateStore.get("Tola");
-                    request.onsuccess = function(event){
+                    var checkUpdate = updateStore.get("Tola");
+                    checkUpdate.onsuccess = function(event){
                         var data = event.target.result;
                         data.age = 40;
                             // Put this updated object back into the database.
