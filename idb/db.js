@@ -25,7 +25,7 @@ else{
                     customerObjectStore.add(customer);
                 
                     });
-                    var request = db.transaction(["customers"]).objectStore.get('Tola');
+                    var request = db.transaction(["customers"]).objectStore("customers").get('Tola');
                     //To delete code below
                     // var request = db.transaction(["customers"], "readwrite")
                     // .objectStore("customers")
