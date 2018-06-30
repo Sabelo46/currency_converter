@@ -48,7 +48,7 @@ else{
                             };
                     }
                     // using a cursor
-                    var storeCheck = db.transaction("customrs").objectStore("customers");
+                    var storeCheck = db.transaction("customers").objectStore("customers");
                     storeCheck.openCursor().onsuccess = function(event){
                         var cursor = event.target.result;
                         if(cursor){
