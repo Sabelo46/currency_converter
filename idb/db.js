@@ -25,7 +25,9 @@ else{
                     customerObjectStore.add(customer);
                 
                     });
-               
+                    var request = db.transaction(["customers"], "readwrite")
+                    .objectStore("customers")
+                    .delete("Tola");
             }
         }
       
