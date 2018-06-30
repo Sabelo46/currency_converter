@@ -11,7 +11,7 @@ else{
         alert('Error in the code'+ event.target.errorCode)
     }
     request.onsuccess = function(event){
-        alert('set');
+        alert('set'+request.result.name);
     }
     request.onupgradeneeded = function(event){
             alert('Update needed');
@@ -25,9 +25,11 @@ else{
                     customerObjectStore.add(customer);
                 
                     });
-                    var request = db.transaction(["customers"], "readwrite")
-                    .objectStore("customers")
-                    .delete("Tola");
+                    var request = db.transaction(["customers"]).objectStore.get('Tola');
+                    //To delete code below
+                    // var request = db.transaction(["customers"], "readwrite")
+                    // .objectStore("customers")
+                    // .delete("Tola");
             }
         }
       
