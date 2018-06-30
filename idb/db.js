@@ -13,6 +13,7 @@ if(window.indexedDB){
         console.log('success');
     }
         request.onupgradeneeded = function(event){
+            alert();
             var db = event.target.result;
             var objectStore = db.createObjectStore('hello',{keyPath:"id"});
             objectStore.createIndex("checking","title",{unique:false});
@@ -20,8 +21,8 @@ if(window.indexedDB){
                 var check = db.transaction(["hello"],"readwrite");
                 var store = check.objectStore('hello');
                 for(let c=0;c< spell.length;c++){
-                    store.add(spell[0]);
+                    store.add(spell[c]);
                 }
-        }
+        }   
     }
 }
