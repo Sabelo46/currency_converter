@@ -5,7 +5,9 @@ const customerData = [
 const dbName = "the_name";
 
 var request = indexedDB.open(dbName, 2);
-
+request.oncomplete= function(event){
+    alert("All done!");
+}
 request.onerror = function(event) {
   // Handle errors.
 };
@@ -29,7 +31,10 @@ request.onupgradeneeded = function(event) {
     // Store values in the newly created objectStore.
     var customerObjectStore = db.transaction("customers", "readwrite").objectStore("customers");
     customerData.forEach(function(customer) {
-      customerObjectStore.add(customer);
+     var check =  customerObjectStore.add(customer);
+        check.onsuccess = function(event){
+            alert('Okay');
+        };
     });
   };
 };
