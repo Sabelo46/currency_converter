@@ -16,21 +16,39 @@ else{
     request.onupgradeneeded = function(event){
             alert('Update needed');
             db = event.target.result;
-            var objectStore = db.createObjectStore("customers", { keyPath: "name"});
+            let objectStore = db.createObjectStore("customers", { keyPath: "name"});
             objectStore.createIndex("confirm", "name", { unique: false });
             objectStore.transaction.oncomplete = function(event){
                 //storing values here..
-                var customerObjectStore = db.transaction("customers", "readwrite").objectStore("customers");
+                let customerObjectStore = db.transaction("customers", "readwrite").objectStore("customers");
                     customerData.forEach(function(customer) {
                     customerObjectStore.add(customer);
                 
                     });
-                    var request = db.transaction(["customers"]).objectStore("customers").getAll();
+                    //Show on Browser
+                    let request = db.transaction(["customers"]).objectStore("customers").getAll();
                     request.onsuccess = function(event){
                         console.log(request.result);
                     }
+                    //Update 
+                    let updateStore =  db.transaction(["customers"]).objectStore("customers");
+                    var request = updateStore.get("Tola");
+                    request.onsuccess = function(event){
+                        var data = event.target.result;
+                        data.age = 40;
+                            // Put this updated object back into the database.
+                            var requestUpdate = updateStore.put(data);
+                            requestUpdate.onerror = function(event) {
+                                // Do something with the error
+                                alert('false');
+                            };
+                            requestUpdate.onsuccess = function(event) {
+                                // Success - the data is updated!
+                                alert('true');
+                            };
+                    }
                     //To delete code below
-                    // var request = db.transaction(["customers"], "readwrite")
+                    // let request = db.transaction(["customers"], "readwrite")
                     // .objectStore("customers")
                     // .delete("Tola");
             }
