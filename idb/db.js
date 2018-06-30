@@ -35,7 +35,7 @@ else{
                     var checkUpdate = updateStore.get("Tola");
                     checkUpdate.onsuccess = function(event){
                         var data = event.target.result;
-                        data.age = 40;
+                        data.age = 41;
                             // Put this updated object back into the database.
                             var requestUpdate = updateStore.put(data);
                             requestUpdate.onerror = function(event) {
