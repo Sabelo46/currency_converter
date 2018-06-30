@@ -11,7 +11,7 @@ else{
         alert('Error in the code'+ event.target.errorCode)
     }
     request.onsuccess = function(event){
-        alert('set'+request.result.name);
+        alert('Tola email is '+request.result.email);
     }
     request.onupgradeneeded = function(event){
             alert('Update needed');
