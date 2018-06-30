@@ -32,9 +32,8 @@ request.onupgradeneeded = function(event) {
     var customerObjectStore = db.transaction("customers", "readwrite").objectStore("customers");
     customerData.forEach(function(customer) {
      var check =  customerObjectStore.add(customer);
-        check.onsuccess = function(event){
-            alert('Okay');
-        };
+       
     });
   };
+  
 };
