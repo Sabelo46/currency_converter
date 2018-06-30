@@ -50,19 +50,32 @@ else{
                     // using a cursor
                     var customers=[];
                     var storeCheck = db.transaction("customers").objectStore("customers");
-                    storeCheck.openCursor().onsuccess = function(event){
-                        var cursor = event.target.result;
-                        if(cursor){
-                            // alert("Name for SSN " + cursor.key + " is " + cursor.value.name);
-                            console.log(cursor.value);
-                            customers.push(cursor.value);
-                            console.log(customers);
-                            cursor.continue();
+                    // storeCheck.openCursor().onsuccess = function(event){
+                        // var cursor = event.target.result;
+                        // if(cursor){
+                        //     // alert("Name for SSN " + cursor.key + " is " + cursor.value.name);
+                        //     console.log(cursor.value);
+                        //     customers.push(cursor.value);
+                        //     console.log(customers);
+                        //     cursor.continue();
+                        // }
+                        // else{
+                        //     alert("No more entries!"+ customers);
+                        // }
+                       
+                    // }
+                     //Searching thrrough
+                        var index = objectStore.index("confirm");
+                   
+                        index.openCursor().onsuccess = function(event){
+                            var cursor = event.target.request;
+                            if(cursor){
+                                alert("Name: " + cursor.key + ", SSN: " + cursor.value.ssn + ", email: " + cursor.value.email);
+                                cursor.continue();
+                            }
                         }
-                        else{
-                            alert("No more entries!"+ customers);
-                        }
-                    }
+                       
+                   
                     //To delete code below
                     // let request = db.transaction(["customers"], "readwrite")
                     // .objectStore("customers")
