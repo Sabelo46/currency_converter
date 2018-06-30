@@ -12,5 +12,6 @@ else{
     }
     request.onupgradeneeded = function(event){
         alert('Update needed');
+        var objectStore = db.createObjectStore("name", { keyPath: "myKey" });
     }
 }
