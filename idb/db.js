@@ -65,7 +65,8 @@ else{
                        
                     // }
                      //Searching thrrough
-                        var index = objectStore.index("confirm");
+                     var searchStore = db.createObjectStore("customers", { keyPath: "name"});
+                        var index = searchStore.index("confirm");
                    
                         index.openCursor().onsuccess = function(event){
                             var cursor = event.target.request;
