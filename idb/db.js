@@ -12,15 +12,16 @@ if(window.indexedDB){
     request.onsuccess = function(event){
         console.log('success');
     }
-    request.onupgradeneeded = function(event){
-        var db = event.target.result;
-        var objectStore = db.createObjectStore('hello',{keyPath:"id"});
-        objectStore.createIndex("checking","title",{unique:false});
-        objectStore.transaction.oncomplete = function(event){
-            var check = db.transaction(["hello"],"readwrite");
-            var store = check.objectStore('hello');
-            for(let c=0;c< spell.length;c++){
-                store.add(spell[0]);
-            }
+        request.onupgradeneeded = function(event){
+            var db = event.target.result;
+            var objectStore = db.createObjectStore('hello',{keyPath:"id"});
+            objectStore.createIndex("checking","title",{unique:false});
+            objectStore.transaction.oncomplete = function(event){
+                var check = db.transaction(["hello"],"readwrite");
+                var store = check.objectStore('hello');
+                for(let c=0;c< spell.length;c++){
+                    store.add(spell[0]);
+                }
         }
     }
+}
