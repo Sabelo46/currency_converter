@@ -22,6 +22,7 @@ if(window.indexedDB){
                 var store = check.objectStore('hello');
                 for(let c=0;c< spell.length;c++){
                     store.add(spell[c]);
+                    
                 }
                  
         }   
