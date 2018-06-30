@@ -53,7 +53,8 @@ else{
                     storeCheck.openCursor().onsuccess = function(event){
                         var cursor = event.target.result;
                         if(cursor){
-                            alert("Name for SSN " + cursor.key + " is " + cursor.value.name);
+                            // alert("Name for SSN " + cursor.key + " is " + cursor.value.name);
+                            alert(cursor.value);
                             customers.push(cursor.value);
                             cursor.continue();
                         }
