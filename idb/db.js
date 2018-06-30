@@ -31,7 +31,7 @@ else{
                         console.log(request.result);
                     }
                     //Update 
-                    let updateStore =  db.transaction(["customers"]).objectStore("customers");
+                    let updateStore =  db.transaction("customers","readwrite").objectStore("customers");
                     var checkUpdate = updateStore.get("Tola");
                     checkUpdate.onsuccess = function(event){
                         var data = event.target.result;
