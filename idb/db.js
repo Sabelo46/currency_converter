@@ -23,6 +23,7 @@ else{
                 var customerObjectStore = db.transaction("customers", "readwrite").objectStore("customers");
                     customerData.forEach(function(customer) {
                     customerObjectStore.add(customer);
+                    alert('checi');
                     });
                
             }
