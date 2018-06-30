@@ -16,7 +16,7 @@ else{
     request.onupgradeneeded = function(event){
             alert('Update needed');
             db = event.target.result;
-            var objectStore = db.createObjectStore("customers", { keyPath: "name" });
+            var objectStore = db.createObjectStore("customers", { keyPath: "name" ,autoIncrement : true});
             objectStore.createIndex("confirm", "name", { unique: false });
             objectStore.transaction.oncomplete = function(event){
                 //storing values here..
