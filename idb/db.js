@@ -23,9 +23,10 @@ if(window.indexedDB){
                 for(let c=0;c< spell.length;c++){
                     store.add(spell[c]);
                 }
+                request.then(function(){
+                    console.log('Good to go on indexedDB! ');
+                })
         }   
     }
-    request.then(function(db){
-        console.log('Good to go on indexedDB! ');
-    })
+    
 }
