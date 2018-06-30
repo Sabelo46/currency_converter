@@ -10,7 +10,7 @@ if(window.indexedDB){
         request.onupgradeneeded = function(event){
             alert('need');
             var db = event.target.result;
-            var objStore = db.createObjectStore("hello", { autoIncrement : true });
+            var objectStore = db.createObjectStore("hello", { autoIncrement : true });
             var transaction = db.transaction(["hello"], "readwrite");
             var keyValStore = transaction.objectStore('hello');
             keyValStore.put('bar', 'foo');
