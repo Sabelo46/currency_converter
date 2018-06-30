@@ -7,7 +7,6 @@ else{
         alert('Error in the code'+ event.target.errorCode)
     }
     request.onsuccess = function(event){
-        db = event.target.result;
         alert('set');
     }
     request.onupgradeneeded = function(event){
