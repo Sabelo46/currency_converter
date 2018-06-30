@@ -56,6 +56,7 @@ else{
                             // alert("Name for SSN " + cursor.key + " is " + cursor.value.name);
                             console.log(cursor.value);
                             customers.push(cursor.value);
+                            console.log(customers);
                             cursor.continue();
                         }
                         else{
