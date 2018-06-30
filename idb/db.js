@@ -6,4 +6,9 @@ if(window.indexedDB){
     request.onsuccess = function(event){
         console.log('success');
     }
+    request.onupgradeneeded = function(event){
+        var db = event.target.result;
+        var objectStore = db.createObjectStore('hello',{keyPath:"id"});
+        objectStore.createIndex("checking","title",{unique:false})
+    }
 }
