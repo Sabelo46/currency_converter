@@ -28,5 +28,6 @@ convert.addEventListener('click',function(){
   )
   .catch(function(err) {
     console.log('Oops!, err');
+    alert();
   });
 })
