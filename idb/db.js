@@ -7,5 +7,9 @@ fetch('https://free.currencyconverterapi.com/api/v5/currencies')
     }
     response.json().then(function(data) {
         console.log(data);
+        let currencies = data.results;
+        currencies.forEach(element => {
+            console.log('c' +element);
+        });
     });
 })
