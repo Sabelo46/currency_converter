@@ -1,4 +1,6 @@
-fetch('https://free.currencyconverterapi.com/api/v5/currencies')
+self.addEventListener('fetch',function(){
+ self.addEventListener('fetch',function(){
+  fetch('https://free.currencyconverterapi.com/api/v5/currencies')
   .then(
     function(response) {
       if (response.status !== 200) {
@@ -32,5 +34,6 @@ fetch('https://free.currencyconverterapi.com/api/v5/currencies')
     }
   )
   .catch(function(err) {
-    console.log('Oops!, err');
-  })
+    console.log('Oops!, err')})
+})
+ })
