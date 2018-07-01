@@ -7,6 +7,11 @@ if(window.indexedDB){
         console.log('successful');
     }
     request.onupgradeneeded = function(event){
-        alert('set');
+        db = event.target.result;
+        let dbStore = db.createObjectStore("results", { keyPath: "id"});
+        dbStore.createIndex("arrange","id",{unique: true});
+        dbStore.transaction.oncomplete = function(event){
+            alert('cojdejfo');
+        }
     }
 }
