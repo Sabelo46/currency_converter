@@ -21,7 +21,7 @@ fetch('https://free.currencyconverterapi.com/api/v5/currencies')
         //   option.text =  ` ${check} (${currencies[c].currencyName})`;  
         //   expect.appendChild(option);
         //   have.appendChild(option.cloneNode(true));
-        console.log('Okay' + currencies);
+        console.log('Okay' + currencies[c]);
         }
 
       });
