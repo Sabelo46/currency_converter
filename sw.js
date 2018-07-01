@@ -5,6 +5,7 @@ var cacheFiles = [
                   'im/a.jpg',
                   'im/b.jpg',
                   'im/c.jpg',
+                  'idb/db.js',
                   'js/convert.js',
                   'js/currenciesController.js',
                   'node_modules/bootstrap/dist/css/bootstrap.css',
