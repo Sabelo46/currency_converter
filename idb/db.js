@@ -8,8 +8,8 @@ fetch('https://free.currencyconverterapi.com/api/v5/currencies')
     response.json().then(function(data) {
         console.log(data);
         let currencies = data.results;
-        currencies.map(element => {
-            console.log(element);
-        })
+       for(check in currencies){
+           console.log(currencies[check].id);
+       }
     });
 })
