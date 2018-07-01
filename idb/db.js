@@ -9,12 +9,13 @@ fetch('https://free.currencyconverterapi.com/api/v5/currencies')
         
         // console.log(data.results);
         // let currenciesHolder = data;
+        let store =[];
         let currencies = data.results;
         
         for(c in currencies){ 
-        console.log('Okays' + currencies[c].id);
+             store.push(currencies[c].id);
         }
-
+        console.log(store)
       });
     }
   )
