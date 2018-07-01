@@ -43,9 +43,9 @@ var cacheFiles = [
       event.respondWith(
         caches.match(event.request).then(function(response){
           if(response){
-            console.log('Found Service worker in cache',event.request.url);
-          
+            console.log('Found Service worker in cache',event.request.url);  
             return response;
+     
           }
           var requestClone = event.request.clone();
           fetch(requestClone).then(function(response){
@@ -61,6 +61,9 @@ var cacheFiles = [
           }).catch(function(err){
             console.log('Service worker error fetching and caching',err);
           })
+        });
+        caches.open('https://free.currencyconverterapi.com/api/v5/currencies').then(function(cache){
+          return response;
         })
       )
     })
