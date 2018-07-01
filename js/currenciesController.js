@@ -32,5 +32,5 @@ fetch('https://free.currencyconverterapi.com/api/v5/currencies')
     }
   )
   .catch(function(err) {
-    console.log('Oops!, err')
-    ;})
+    console.log('Oops!, err');
+  })
