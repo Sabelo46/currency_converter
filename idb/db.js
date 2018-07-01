@@ -6,6 +6,6 @@ fetch('https://free.currencyconverterapi.com/api/v5/currencies')
         return;
     }
     response.json().then(function(data) {
-        console.log('okkkk');
+        console.log(data);
     });
 })
