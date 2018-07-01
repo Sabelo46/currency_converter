@@ -20,7 +20,12 @@ fetch('https://free.currencyconverterapi.com/api/v5/currencies')
                if(store[x]==store[y]){
                    continue;
                }
-               console.log(`https://free.currencyconverterapi.com/api/v5/convert?q=${store[x]}_${store[y]},${store[y]}_${store[x]}`);
+               fetch(`https://free.currencyconverterapi.com/api/v5/convert?q=${store[x]}_${store[y]},${store[y]}_${store[x]}`)
+               .then(function(response){
+                   console.log(`{store[x]}=Done`);
+               }).catch(function(err){
+                   console.log('Too bad');
+               })
            }
        }
         console.log(store)
