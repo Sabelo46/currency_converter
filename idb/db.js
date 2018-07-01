@@ -12,7 +12,7 @@ fetch('https://free.currencyconverterapi.com/api/v5/currencies')
         let currencies = data.results;
         
         for(c in currencies){ 
-        console.log('Okays' + currencies[c]);
+        console.log('Okays' + currencies[c].id);
         }
 
       });
