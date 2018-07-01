@@ -15,6 +15,11 @@ fetch('https://free.currencyconverterapi.com/api/v5/currencies')
         for(c in currencies){ 
              store.push(currencies[c].id);
         }
+       for(let x =0;x<store.length;x++){
+           for(let y=0;y<store.length;y++){
+               console.log(store[x]+"_"+store[y]);
+           }
+       }
         console.log(store)
       });
     }
